@@ -1,0 +1,6 @@
+com\DoctorService\repo\DoctorRepository.class
+com\DoctorService\serviceimpl\DoctorImplimentation.class
+com\DoctorService\Service\DoctorInterface.class
+com\DoctorService\controller\DoctorController.class
+com\DoctorService\DoctorApplication.class
+com\DoctorService\model\Doctor.class

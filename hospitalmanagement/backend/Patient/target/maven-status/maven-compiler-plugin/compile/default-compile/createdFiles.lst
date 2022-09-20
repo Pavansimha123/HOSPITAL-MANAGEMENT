@@ -1,0 +1,9 @@
+com\PatientService\model\Patient.class
+com\PatientService\PatientApplication.class
+com\PatientService\serviceimpl\PatientService.class
+com\PatientService\Service\PatientInterface.class
+com\PatientService\model\Doctor.class
+com\PatientService\model\PatientInformation.class
+com\PatientService\model\VisitedDoctor.class
+com\PatientService\controller\PatientController.class
+com\PatientService\repo\PatientRepository.class
