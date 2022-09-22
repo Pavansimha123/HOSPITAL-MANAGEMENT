@@ -1,16 +1,7 @@
-package com.PatientService.model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package com.PatientService.Vo;
 
-
-@Entity
-public class Doctor {
-	
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Doctor 
+{
 	private Integer doctorid;
 	private String doctorName;
 	private int doctorAge;

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.PatientService.Service.PatientInterface;
+import com.PatientService.Vo.Doctor;
 import com.PatientService.model.PatientInformation;
-import com.PatientService.model.Doctor;
 import com.PatientService.model.Patient;
 
 import com.PatientService.model.VisitedDoctor;
@@ -20,7 +20,7 @@ import com.PatientService.repo.PatientRepository;
 public class PatientService implements PatientInterface {
 	
 	@Autowired
-	private PatientRepository patientrepo;
+	private PatientRepository patientrepository;
 	
 	@Autowired
 	private RestTemplate resttemplate;
@@ -28,36 +28,37 @@ public class PatientService implements PatientInterface {
 	@Override
 	public List<Patient> getAllPatient() {
 		// TODO Auto-generated method stub
-		return patientrepo.findAll();
+		return patientrepository.findAll();
 	}
 
 	@Override
 	public Patient getPatient(Integer id) {
 		// TODO Auto-generated method stub
-		List<Patient> s = patientrepo.findByPatientid(id);
+		List<Patient> s = patientrepository.findByPatientid(id);
 		return s.get(0);
 	}
+	@Override
+	public Patient createPatient(Patient patient) {
+		// TODO Auto-generated method stub
+		return patientrepository.save(patient);
+	}
+
 
 	@Override
 	public PatientInformation getVisitDetails(Integer id)
 	{
-		List<VisitedDoctor> sts=new ArrayList<>();
-		List<Patient> pat=patientrepo.findByPatientid(id);
-		for(int i=0;i<pat.size();i++)
+		List<VisitedDoctor> lst=new ArrayList<>();
+		List<Patient> patientlist=patientrepository.findByPatientid(id);
+		for(int i=0;i<patientlist.size();i++)
 		{
-			Doctor doc= resttemplate.getForObject("http://DOCTOR-SERVICE/doctor/"+pat.get(i).getDocvisited(),Doctor.class);
-			sts.add(new VisitedDoctor(doc.getDoctorName() , pat.get(i).getDocvisited(),pat.get(i).getPrescription(),pat.get(i).getDate()));
+			Doctor doc= resttemplate.getForObject("http://DOCTOR-SERVICE/doctor/"+patientlist.get(i).getDocvisited(),Doctor.class);
+			lst.add(new VisitedDoctor(doc.getDoctorName() , patientlist.get(i).getDocvisited(),patientlist.get(i).getPrescription(),patientlist.get(i).getDate()));
 		}
-		PatientInformation o= new PatientInformation(pat.get(0).getPatientname(), pat.get(0).getAge(), sts);
+		PatientInformation o= new PatientInformation(patientlist.get(0).getPatientname(), patientlist.get(0).getAge(), lst);
 		return o;
 	}
 
-	@Override
-	public void addPatient(Patient patient) {
-		// TODO Auto-generated method stub
-		patientrepo.save(patient);
-	}
-
+	
 	
 
 }

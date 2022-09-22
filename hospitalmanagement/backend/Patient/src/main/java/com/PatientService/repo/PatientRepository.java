@@ -13,8 +13,5 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
 
 	public List<Patient> findByPatientid(Integer id);
 
-	public void deleteByPatientid(Integer pid);
-	
-	
-	
+
 }

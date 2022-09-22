@@ -3,13 +3,12 @@ package com.DoctorService.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Component;
 import com.DoctorService.Service.DoctorInterface;
 import com.DoctorService.model.Doctor;
 import com.DoctorService.repo.DoctorRepository;
 
-@Service
+@Component
 public class DoctorImplimentation implements DoctorInterface {
 	
 	

@@ -13,6 +13,6 @@ public interface PatientInterface {
 	public List<Patient> getAllPatient();
 	public Patient getPatient(Integer id);
 	public PatientInformation getVisitDetails(Integer id);
-	public void addPatient(Patient p);
+	public Patient createPatient(Patient p);
 	
 }
