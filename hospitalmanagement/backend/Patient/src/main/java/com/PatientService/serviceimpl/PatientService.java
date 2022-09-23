@@ -58,6 +58,12 @@ public class PatientService implements PatientInterface {
 		return o;
 	}
 
+	@Override
+	public List<Patient> getpatientsdoctor(Integer id) {
+		// TODO Auto-generated method stub
+		return patientrepository.findByDocvisited(id);
+	}
+
 	
 	
 

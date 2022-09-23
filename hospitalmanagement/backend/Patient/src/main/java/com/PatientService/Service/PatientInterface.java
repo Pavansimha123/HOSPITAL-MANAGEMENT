@@ -14,5 +14,6 @@ public interface PatientInterface {
 	public Patient getPatient(Integer id);
 	public PatientInformation getVisitDetails(Integer id);
 	public Patient createPatient(Patient p);
+	public List<Patient> getpatientsdoctor(Integer id);
 	
 }
